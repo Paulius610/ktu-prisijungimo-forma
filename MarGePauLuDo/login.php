@@ -7,6 +7,13 @@ background-color: rgb(21,185,26);
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+</head>
+<body>
   <form>
   <div class="form-group">
     <label for="InputUsername">Username: </label>

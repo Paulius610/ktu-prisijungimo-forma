@@ -5,4 +5,4 @@ CREATE TABLE  `setup` (
 `password` TEXT NOT NULL ,
 `codegenerator` TEXT NOT NULL ,
 `id` TEXT NOT NULL
-)
+);

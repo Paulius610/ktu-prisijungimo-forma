@@ -1,5 +1,5 @@
 Martnas Rutkus
-Paulius Saulënas
+Paulius Saulenas
 Gediminas Jacunskas
-Lukas Krikğtanavièius
+Lukas Krikstanavicius
 Dominykas Krutulis

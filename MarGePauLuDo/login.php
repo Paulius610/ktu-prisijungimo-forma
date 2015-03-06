@@ -17,6 +17,6 @@ background-color: rgb(21,185,26);
     <input type="password" class="form-control" id="InputPassword" placeholder="Password">
   </div>
   <button type="submit" class="btn btn-default">Login</button>
-</form>
+  </form>
 </body>
 </html>

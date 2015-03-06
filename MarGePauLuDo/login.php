@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body>
-  <form>
+<div class="wrapper">
+  <form class="form-signin">
+  <h2 class="form-signin-heading">Please login</h2>
   <div class="form-group">
     <label for="InputUsername">Username: </label>
     <input type="text" class="form-control" id="InputUsername" placeholder="Enter username">
@@ -23,5 +25,6 @@
   </div>
   <button type="submit" class="btn btn-success">Login</button>
   </form>
+  </div>
 </body>
 </html>

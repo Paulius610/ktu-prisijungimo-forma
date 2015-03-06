@@ -10,7 +10,7 @@ background-color: rgb(21,185,26);
   <form>
   <div class="form-group">
     <label for="InputUsername">Username: </label>
-    <input type="email" class="form-control" id="InputEmail" placeholder="Enter username">
+    <input type="email" class="form-control" id="InputUsername" placeholder="Enter username">
   </div>
   <div class="form-group">
     <label for="InputPassword">Password: </label>

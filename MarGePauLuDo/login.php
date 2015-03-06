@@ -13,17 +13,17 @@
   <form class="form-signin">
   <h2 class="form-signin-heading">Please login</h2>
   <div class="form-group">
-    <label for="InputUsername">Username: </label>
-    <input type="text" class="form-control" id="InputUsername" placeholder="Enter username">
+    <label for="username">Username: </label>
+    <input type="text" class="form-control" name="username" placeholder="Enter username">
   </div>
   <div class="form-group">
-    <label for="InputPassword">Password: </label>
-    <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+    <label for="password">Password: </label>
+    <input type="password" class="form-control" name="password" placeholder="Password">
   </div>
   <div  class="small">
   <a href="#">Forgot your password?</a>
   </div>
-  <button type="submit" class="btn btn-success">Login</button>
+  <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
   </form>
   </div>
 </body>

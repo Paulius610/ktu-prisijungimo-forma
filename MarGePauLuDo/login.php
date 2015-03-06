@@ -18,7 +18,10 @@
     <label for="InputPassword">Password: </label>
     <input type="password" class="form-control" id="InputPassword" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-default">Login</button>
+  <div  class="small">
+  <a href="#">Forgot your password?</a>
+  </div>
+  <button type="submit" class="btn btn-success">Login</button>
   </form>
 </body>
 </html>

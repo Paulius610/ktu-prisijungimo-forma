@@ -2,56 +2,93 @@
 <html xmlns="http://www.w3.org/1999/html"><head lang="en">
     <meta charset="UTF-8">
     <title>JM</title>
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
+
 </head>
 <body>
-<div class="row" align="center">
+<div align="center">
 
+    <h1>Kažkoks logo</h1><br>
+    <table class="table table-bordered" style="width: 40%;">
 
-    <h1><strong>Kažkoks LOGO</strong></h1>
-    <br>
+        <td class="alert-info" style="text-align: center">
+            <br>
 
-    <table class="table table-bordered">
+            <h3><strong>Prisijungti!</strong></h3>
 
-    <td class="info" align="right">
-        <div class="col-md-12" align="right">
-
-
-        <h2>Prisijungti</h2>
-        <br>
-        <a>Vardas</a><br>
-        <input type="text" name="Vardas" placeholder="Petras"><br>
-        <br>
-        <a>Slaptažodis</a><br>
-        <input type="password" name="Slaptažodis" placeholder="Petraitis"><br>
-        <br>
-        <button class="btn btn-primary" name="Prisijungti">Prisijungti</button><br>
-        </div>
         </td>
 
-    <td class="success">
+        <td class="alert-info">
+            <form class="form-horizontal">
 
-    <div class="col-md-12" align="left">
+                <label  class="col-xs-4 control-label">Vardas </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control"  placeholder="Vardas">
+                </div>
+                <br><br>
 
-        <h2 >Registruotis</h2><br>
-        <a>Vardas</a><br>
-        <input type="text" name="Vardas" placeholder="Petras"><br>
-        <br>
-        <a>Slaptažodis</a><br>
-        <input type="password" name="Slaptažodis" placeholder="Petraitis"><br>
-        <br>
-        <a>El.paštas</a><br>
-        <input type="text" name="El.paštas" placeholder="P.Petraitis@gmail.com"><br>
-        <br>
-        <button class="btn btn-success" name="Registruotis">Registruotis</button>
+
+                <label class="col-xs-4 control-label">Slaptažodis </label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control"  placeholder="Slaptažodis">
+                </div>
+
+                <br><br>
+                <div class="form-group" >
+                    <div class="col-sm-14" align="center">
+                        <br>
+                        <button class="btn btn-primary">Prisijungti</button>
+                    </div>
+                </div>
+            </form></td>
+    </table>
+
+    <br><br>
+
+    <table class="table table-bordered" style="width: 40%;">
+
+        <td class="alert-danger" style="text-align: center">
+            <br>
+
+            <h3><strong>Registruotis!</strong></h3>
+
         </td>
 
+        <td class="alert-danger">
+            <form class="form-horizontal">
+
+                <label  class="col-xs-4 control-label">Vardas </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control"  placeholder="Vardas">
+                </div>
+                <br><br>
+
+
+                <label class="col-xs-4 control-label">Slaptažodis </label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control"  placeholder="Slaptažodis">
+                </div>
+
+                <br><br>
+
+                <label  class="col-xs-4 control-label">El.paštas </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control"  placeholder="El.paštas">
+                </div>
+
+                <br><br>
+
+                <div class="form-group" >
+                    <div class="col-sm-14" align="center">
+                        <br>
+                        <button class="btn btn-primary">Registruotis</button>
+                    </div>
+                </div>
+            </form></td>
     </table>
 
     <button class="btn btn-danger">Pamiršote slaptažodį?</button>
-
-    </div>
-
 </div>
 
 

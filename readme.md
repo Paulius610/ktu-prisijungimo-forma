@@ -10,7 +10,10 @@ Apie jį http://getbootstrap.com/css/#forms, http://getbootstrap.com/getting-sta
   - Registracijos forma
   - Priminimo forma
   
- == Ankstesni reikalai ==
+ Jei turite klausimų, rašykite https://github.com/donatasbartkus/ktu-prisijungimo-forma/issues
+  
+ Ankstesni reikalai
+ ------------------
 
 1) Pažintis 2015-03-05
 

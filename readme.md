@@ -1,4 +1,11 @@
+Dėmesio!
+--------
+
+  Šiek tiek pertvarkiau mūsų versijų kontrolės sistemos failų struktūrą, todėl nepamirškit visi pas save lokaliai atsinaujint     pakeitimų.
+
+
 TODO
+----
 
 * DB struktūra (ir sukūrimo instrukcija)
 
@@ -12,8 +19,8 @@ Apie jį http://getbootstrap.com/css/#forms, http://getbootstrap.com/getting-sta
   
  Jei turite klausimų, rašykite https://github.com/donatasbartkus/ktu-prisijungimo-forma/issues
   
- Ankstesni reikalai
- ------------------
+Ankstesni reikalai
+------------------
 
 1) Pažintis 2015-03-05
 

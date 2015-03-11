@@ -10,10 +10,5 @@ Apie jį http://getbootstrap.com/css/#forms, http://getbootstrap.com/getting-sta
   - Registracijos forma
   - Priminimo forma
 
-   
-  
-1. Martnas Rutkus
-2. Paulius Saulenas
-3. Gediminas Jacunskas
-4. Lukas Krikstanavicius
-5. Dominykas Krutulis
+Čia matote Pauliaus Saulėno prisijungimo/registracijos formą.
+Jei neturite dar prisijungimo duomenų, spauskite "Sign Up Here" ir užpildykite formą. Na, o jei jau prisiregistravote, galite prisijungti su savo duomenimis. Jei užmiršote savo prisijungimo duomenis, spauskite "Forgot password?".

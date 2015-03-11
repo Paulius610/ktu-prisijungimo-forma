@@ -1,2 +1,0 @@
-Justas Morkûnas
-Mantas Naujokas 

@@ -1,3 +1,0 @@
-Domantas Andriuðkevièius
-Grantas Narbutas
-Domas Lavrukaitis

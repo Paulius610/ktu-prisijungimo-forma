@@ -87,8 +87,9 @@
                 </div>
             </form></td>
     </table>
-
-    <button class="btn btn-danger">Pamiršote slaptažodį?</button>
+    <form action="remember.php" >
+        <input type="submit" class="btn btn-danger" value="Pamiršote slaptažodį?">
+    </form>
 </div>
 
 

@@ -6,10 +6,25 @@ Dėmesio!
 
 TODO
 ----
+3) Naudotojų jungimosi duomenų priėmimas/tikrinimas 2015-03-19
+
+* Sukurti PHP failus, prisijungimo duomenims priimti 
+
+* Git naujus failus reik pridėti su komanda: git add  (arba PHPStorm: VCS->Git-> +Add)
+
+* Kuriamus failus (PHP ir kt.) galite [automatiškai nusiųsti (DEPLOY) į vykdymo serverį per ftp](https://confluence.jetbrains.com/display/PhpStorm/Deploying+PHP+applications+with+PhpStorm#DeployingPHPapplicationswithPhpStorm-1.Configuringadeploymentserver)
+
+  
+ Jei turite klausimų, rašykite https://github.com/donatasbartkus/ktu-prisijungimo-forma/issues
+  
+Ankstesni reikalai
+------------------
+
+2) Naudotojų jungimosi reikalai 2015-03-12
 
 * DB struktūra (ir sukūrimo instrukcija)
 
-* Naudotojo prisijungimo sąsaja  (https://drive.google.com/file/d/0B9fygqXqjcgxMEFISlRiSVVTTkk/view?usp=sharing)
+* Naudotojo prisijungimo sąsaja  ([UseCase schema (hm, nerodo užrašų :/)](https://drive.google.com/file/d/0B9fygqXqjcgxMEFISlRiSVVTTkk/view?usp=sharing))
   Kol kas tik HTML (bet naudojant HTML/CSS/JS karkasą Bootstrap (Twiterio sukurtą) (https://github.com/twbs/bootstrap/releases/download/v3.3.2/bootstrap-3.3.2-dist.zip) )
   
 Apie jį http://getbootstrap.com/css/#forms, http://getbootstrap.com/getting-started/#examples, https://www.youtube.com/watch?v=GU6EWzBGo64
@@ -17,16 +32,11 @@ Apie jį http://getbootstrap.com/css/#forms, http://getbootstrap.com/getting-sta
   - Registracijos forma
   - Priminimo forma
   
- Jei turite klausimų, rašykite https://github.com/donatasbartkus/ktu-prisijungimo-forma/issues
-  
-Ankstesni reikalai
-------------------
-
 1) Pažintis 2015-03-05
 
 Pažintis su **versijų kontrolės sistemomis**:  anksčiau buvo centralizuota VCS, SVN, dabar populiariausios decentralizuotos Mercurial bei GIT
 - Ką nuveikėm:
-   - pažiūrėjom idėjas https://docs.google.com/spreadsheets/d/1XybeyEPG9502Bg1V1xcGQLSoUfA1ag3q2V2prqdVBs4/edit#gid=2038695298
+   - pažiūrėjom [idėjas](https://docs.google.com/spreadsheets/d/1XybeyEPG9502Bg1V1xcGQLSoUfA1ag3q2V2prqdVBs4/edit#gid=2038695298)
    - nusprendėm, kad daugumai projektų reikia  naudotojo prisijungimo formos 
    - suinstaliavus Git, galima klonuoti saugyklą iš https://github.com/donatasbartkus/ktu-prisijungimo-forma.git
    - tada dirbama su lokalia kopija, o pakeitimai vėliau vėl siunčiami į serverį.

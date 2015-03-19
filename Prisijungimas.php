@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html"><head lang="en">
+<html><head lang="en">
     <meta charset="UTF-8">
     <title>JM</title>
 
@@ -7,6 +7,39 @@
 
 </head>
 <body>
+
+<?php
+$self = $_SERVER['PHP_SELF'];
+$ipaddress = ("$_SERVER[REMOTE_ADDR]");
+
+include('db.php');
+
+$connect = mysql_connect($host,$username,$password) or die('<p class="error">Unable to connect to the database server at this time.</p>');
+
+mysql_select_db($database,$connect) or die('<p class="error">Unable to connect to the database at this time.</p>');
+
+if(isset($_POST['send'])) {
+    if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
+        echo('<p align="center" class="error">Neužpild&#279;te vis&#371; langeli&#371;</p>');
+    } else {
+        $name = htmlspecialchars(mysql_real_escape_string($_POST['name']));
+        $pass = htmlspecialchars(mysql_real_escape_string($_POST['password']));
+        $email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
+
+
+
+        $sql = "INSERT INTO users SET nick='$name', email='$email', password='$pass', rank='0';";
+
+        if (@mysql_query($sql)) {
+            echo('<p class="success">Registracija sekminga!</p>');
+        } else {
+            echo('<p class="error">Error!</p>');
+            echo mysql_error();
+        }
+    }
+}
+
+?>
 <div align="center">
 
     <h1>Kažkoks logo</h1><br>
@@ -24,14 +57,14 @@
 
                 <label  class="col-xs-4 control-label">Vardas </label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control"  placeholder="Vardas">
+                    <input name="name" type="text" class="form-control"  placeholder="Vardas">
                 </div>
                 <br><br>
 
 
                 <label class="col-xs-4 control-label">Slaptažodis </label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control"  placeholder="Slaptažodis">
+                    <input name="password" type="password" class="form-control"  placeholder="Slaptažodis">
                 </div>
 
                 <br><br>
@@ -56,25 +89,25 @@
         </td>
 
         <td class="alert-danger">
-            <form class="form-horizontal">
+            <form class="form-horizontal"  action="<?php $self ?>" method="post">
 
-                <label  class="col-xs-4 control-label">Vardas </label>
+                <label for="name"  class="col-xs-4 control-label">Vardas </label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control"  placeholder="Vardas">
+                    <input name="name" type="text" class="form-control"  placeholder="Vardas">
                 </div>
                 <br><br>
 
 
-                <label class="col-xs-4 control-label">Slaptažodis </label>
+                <label for="password" class="col-xs-4 control-label">Slaptažodis </label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control"  placeholder="Slaptažodis">
+                    <input name="password" type="password" class="form-control"  placeholder="Slaptažodis">
                 </div>
 
                 <br><br>
 
-                <label  class="col-xs-4 control-label">El.paštas </label>
+                <label for="email" class="col-xs-4 control-label">El.paštas </label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control"  placeholder="El.paštas">
+                    <input name="email" type="text" class="form-control"  placeholder="El.paštas">
                 </div>
 
                 <br><br>
@@ -82,16 +115,16 @@
                 <div class="form-group" >
                     <div class="col-sm-14" align="center">
                         <br>
-                        <button class="btn btn-primary">Registruotis</button>
+                        <input name="send" type="hidden" />
+                        <input class="btn btn-primary" type="submit" value="send">
                     </div>
                 </div>
             </form></td>
     </table>
     <form action="remember.php" >
-        <input type="submit" class="btn btn-danger" value="Pamiršote slaptažodį?">
+        <input type="submit" class="btn btn-danger" value="Pamiršote slaptažod&#303;?">
     </form>
 </div>
-
 
 
 

@@ -1,4 +1,4 @@
-BEGIN TRANSACTION;
+
 CREATE TABLE `users` (
 	`id`	INTEGER,
 	`nick`	TEXT,
@@ -6,4 +6,3 @@ CREATE TABLE `users` (
 	`password`	TEXT,
 	`rank`	INTEGER
 );
-COMMIT;

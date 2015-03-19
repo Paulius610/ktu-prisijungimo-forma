@@ -9,37 +9,7 @@
 <body>
 
 <?php
-$host = 'mysql9.000webhost.com';
-$username = 'a4119726_admin';
-$password = 'lopaslt2';
-$database = 'a4119726_db';
-
-$self = $_SERVER['PHP_SELF'];
-$ipaddress = ("$_SERVER[REMOTE_ADDR]");
-
-$connect = mysql_connect($host,$username,$password) or die('Unable to connect to the database server at this time.');
-
-mysql_select_db($database,$connect) or die('Unable to connect to the database at this time.');
-
-    if(isset($_POST['send'])) {
-        if(empty($_POST['email']) || empty($_POST['password']) )) {
-            echo('Nesuvedėte visų reikiamų duomenų');
-        }
-    else {
-        $email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
-        $password = htmlspecialchars(mysql_real_escape_string($_POST['post']));
-
-$sql = "SELECT FROM db WHERE email='$email', password='$password';";
-
-    if (@mysql_query($sql)) {
-        echo('<p>Prisijungėte.</p>');
-    }
-
-    else {
-        echo('Suklydote vesdami el. paštą arba/ir slaptažodį.');
-    }
-    }
-}
+include('loginas.php');
 ?>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

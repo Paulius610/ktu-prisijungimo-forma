@@ -6,3 +6,8 @@ CREATE TABLE `db` (
 	`password`	TEXT
 );
 COMMIT;
+
+INSERT INTO db VALUES(00000000000000000000000000000000, "user0", "user0@gmail.com", "password0");
+INSERT INTO db VALUES(00000000000000000000000000000001, "user1", "user1@gmail.com", "password0");
+INSERT INTO db VALUES(00000000000000000000000000000002, "user2", "user2@gmail.com", "password2");
+

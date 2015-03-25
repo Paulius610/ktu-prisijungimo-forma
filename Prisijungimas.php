@@ -18,6 +18,10 @@ $connect = mysql_connect($host,$username,$password) or die('<p class="error">Una
 
 mysql_select_db($database,$connect) or die('<p class="error">Unable to connect to the database at this time.</p>');
 
+
+
+
+
 if(isset($_POST['send'])) {
     if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
         echo('<p align="center" class="error">Neužpild&#279;te vis&#371; langeli&#371;</p>');
@@ -26,15 +30,33 @@ if(isset($_POST['send'])) {
         $pass = htmlspecialchars(mysql_real_escape_string($_POST['password']));
         $email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
 
+        $query = "SELECT `nick` FROM `users`;";
 
+        $check = @mysql_query("$query") or die('<p class="error">Nepavyko gauti duomenų iš duomenų bazės.</p>');
 
         $sql = "INSERT INTO users SET nick='$name', email='$email', password='$pass', rank='0';";
+
+
+        /// tikrina ar dar nėra tokio vartotojo vardo
+        while($row = mysql_fetch_array($check)){
+
+
+        $fname = stripslashes($row['nick']);
+
+            if($name == $fname){
+                echo('<p aling="center">Toks vartotojo vardas jau užimtas</p>');
+                echo('<a align="center" href="prisijungimas.php">Grįžti į registraciją!</a>');
+                exit;
+            }}
+
+        /// įrašo duomenis į duomenų bazę
 
         if (@mysql_query($sql)) {
             echo('<p class="success">Registracija sekminga!</p>');
         } else {
             echo('<p class="error">Error!</p>');
             echo mysql_error();
+
         }
     }
 }

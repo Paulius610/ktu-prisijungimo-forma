@@ -22,7 +22,7 @@ mysql_select_db($database,$connect) or die('<p class="error">Unable to connect t
 
 
 
-if(isset($_POST['send'])) {
+if(isset($_POST['registracija'])) {
     if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
         echo('<p align="center" class="error">Neužpild&#279;te vis&#371; langeli&#371;</p>');
     } else {
@@ -45,14 +45,17 @@ if(isset($_POST['send'])) {
 
             if($name == $fname){
                 echo('<p aling="center">Toks vartotojo vardas jau užimtas</p>');
-                echo('<a align="center" href="prisijungimas.php">Grįžti į registraciją!</a>');
+
                 exit;
             }}
 
         /// įrašo duomenis į duomenų bazę
 
         if (@mysql_query($sql)) {
-            echo('<p class="success">Registracija sekminga!</p>');
+            echo('<div class="row"><div class="col-md-4"></div>
+<div align="center" class="alert alert-success"><p class="success">Registracija sekminga!</p></div>
+<div class="col-md-4"></div>
+</div>');
         } else {
             echo('<p class="error">Error!</p>');
             echo mysql_error();
@@ -137,8 +140,8 @@ if(isset($_POST['send'])) {
                 <div class="form-group" >
                     <div class="col-sm-14" align="center">
                         <br>
-                        <input name="send" type="hidden" />
-                        <input class="btn btn-primary" type="submit" value="send">
+                        <input name="registracija" type="hidden" />
+                        <input class="btn btn-primary" type="submit" value="Registruotis">
                     </div>
                 </div>
             </form></td>

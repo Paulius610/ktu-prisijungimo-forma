@@ -8,7 +8,7 @@ TODO
 ----
 3) Naudotojų jungimosi duomenų priėmimas/tikrinimas 2015-03-19
 
-* Sukurti PHP failus, prisijungimo duomenims priimti 
+* Sukurti PHP failus, prisijungimo duomenims priimti. ir prisiminkite, **[kaip tvarkytis su Mysql](http://coursescript.com/notes/dynamicweb/mysql/examples/)**.
 
 * Git naujus failus reik pridėti su komanda: git add  (arba PHPStorm: VCS->Git-> +Add)
 

@@ -25,7 +25,7 @@
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
-                        <form id="loginform" class="form-horizontal" role="form">
+                        <form id="loginform" class="form-horizontal" role="form" action="login.php"  method="post">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -52,7 +52,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+									  <button id="btn-login" type="submit" class="btn btn-sucess">Login</button>
                                       <!--<a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>-->
 
                                     </div>
@@ -68,7 +68,8 @@
                                         </a>
                                         </div>
                                     </div>
-                                </div>    
+                                </div>
+									<input type="hidden" name="veiksmas" value="signin">								
                             </form>     
 
 
@@ -85,7 +86,7 @@
 							</div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form">
+                            <form id="signupform" class="form-horizontal" role="form" action="login.php"  method="post">
                                 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
@@ -133,7 +134,7 @@
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
                                        <!-- <span style="margin-left:8px;">or</span>  -->
                                     </div>
                                 </div>
@@ -147,7 +148,7 @@
                                 </div>
                                 -->
                                 
-                                
+                            <input type="hidden" name="veiksmas" value="signup">	    
                             </form>
                          </div>
                     </div>
@@ -157,5 +158,41 @@
                 
          </div> 
     </div>
+
+	<?php
+include ('db.php'); // for db details
+ 
+$connect=mysql_connect($host,$username,$password) or die('<p class="error">Unable to connect to the database server at this time.</p>');
+ 
+mysql_select_db($database,$connect) or die('<p class="error">Unable to connect to the database at this time.</p>');
+
+$veiksmas = htmlspecialchars(mysql_real_escape_string($_POST['veiksmas']));
+if ($veiksmas=='signup') {
+	$username = htmlspecialchars(mysql_real_escape_string($_POST['username'])); 
+	$firstname = htmlspecialchars(mysql_real_escape_string($_POST['firstname'])); 
+	$lastname = htmlspecialchars(mysql_real_escape_string($_POST['lastname']));
+	$email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
+	$password = htmlspecialchars(mysql_real_escape_string($_POST['password']));
+	$sql = "INSERT INTO setup SET username='$username', firstname='$firstname', lastname='$lastname', email='$email', password='$password';";
+	//echo $sql;
+	$result = mysql_query($sql);
+}
+if ($veiksmas=='signin') {
+	$username = htmlspecialchars(mysql_real_escape_string($_POST['username']));
+	$password = htmlspecialchars(mysql_real_escape_string($_POST['password']));
+	$sql = "SELECT username, password from setup WHERE username='$username' AND password='$password';";
+	//echo $sql;
+	$result = mysql_query($sql);
+	//var_dump($result);
+	$rowcount=mysql_num_rows($result);
+	if ($rowcount!=0){
+		echo 'Prisijungta';
+}
+	else {
+		echo 'Nepavyko';
+	}
+}
+
+?>
 </body>
 </html>

@@ -8,66 +8,65 @@
 </head>
 <body>
 
-<?php
-$self = $_SERVER['PHP_SELF'];
-$ipaddress = ("$_SERVER[REMOTE_ADDR]");
 
-include('db.php');
-
-$connect = mysql_connect($host,$username,$password) or die('<p class="error">Unable to connect to the database server at this time.</p>');
-
-mysql_select_db($database,$connect) or die('<p class="error">Unable to connect to the database at this time.</p>');
-
-
-
-
-
-if(isset($_POST['registracija'])) {
-    if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
-        echo('<p align="center" class="error">Neužpild&#279;te vis&#371; langeli&#371;</p>');
-    } else {
-        $name = htmlspecialchars(mysql_real_escape_string($_POST['name']));
-        $pass = htmlspecialchars(mysql_real_escape_string($_POST['password']));
-        $email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
-
-        $query = "SELECT `nick` FROM `users`;";
-
-        $check = @mysql_query("$query") or die('<p class="error">Nepavyko gauti duomenų iš duomenų bazės.</p>');
-
-        $sql = "INSERT INTO users SET nick='$name', email='$email', password='$pass', rank='0';";
-
-
-        /// tikrina ar dar nėra tokio vartotojo vardo
-        while($row = mysql_fetch_array($check)){
-
-
-        $fname = stripslashes($row['nick']);
-
-            if($name == $fname){
-                echo('<p aling="center">Toks vartotojo vardas jau užimtas</p>');
-
-                exit;
-            }}
-
-        /// įrašo duomenis į duomenų bazę
-
-        if (@mysql_query($sql)) {
-            echo('<div class="row"><div class="col-md-4"></div>
-<div align="center" class="alert alert-success"><p class="success">Registracija sekminga!</p></div>
-<div class="col-md-4"></div>
-</div>');
-        } else {
-            echo('<p class="error">Error!</p>');
-            echo mysql_error();
-
-        }
-    }
-}
-
-?>
 <div align="center">
 
     <h1>Kažkoks logo</h1><br>
+    <?php
+    error_reporting(E_ALL);
+
+    $self = $_SERVER['PHP_SELF'];
+    $ipaddress = ("$_SERVER[REMOTE_ADDR]");
+
+    include('db.php');
+
+    $connect = mysql_connect($host,$username,$password) or die('<p class="error">Unable to connect to the database server at this time.</p>');
+
+    mysql_select_db($database,$connect) or die('<p class="error">Unable to connect to the database at this time.</p>');
+
+
+
+
+
+    if(isset($_POST['registracija'])) {
+        if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
+            echo('<div align="center" class="alert alert-danger"><p>Neužpildėtete visų langelių!</p></div>');
+        }
+
+        else {
+            $name = htmlspecialchars(mysql_real_escape_string($_POST['name']));
+            $pass = htmlspecialchars(mysql_real_escape_string($_POST['password']));
+            $email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
+
+            $query = "SELECT `nick` FROM `users` WHERE nick='$name';";
+
+            $check = @mysql_query("$query") or die('<p class="error">Nepavyko gauti duomenų iš duomenų bazės.</p>');
+
+            $sql = "INSERT INTO users SET nick='$name', email='$email', password='$pass', rank='0';";
+
+
+            /// tikrina ar dar nėra tokio vartotojo vardo
+            $nr = mysql_num_rows($check);
+
+            if($nr > 0){
+                echo('<div align="center" class="alert alert-danger">Toks vartotojo vardas jau užimtas!</div>');
+            }
+
+            /// įrašo duomenis į duomenų bazę
+
+
+            else{
+            if (@mysql_query($sql)) {
+                echo('<div align="center" class="alert alert-success"><p class="success">Registracija sekminga!</p></div>');
+            } else {
+                echo('<p class="error">Error!</p>');
+                echo mysql_error();
+
+            }
+        }}
+    }
+
+    ?>
     <table class="table table-bordered" style="width: 40%;">
 
         <td class="alert-info" style="text-align: center">

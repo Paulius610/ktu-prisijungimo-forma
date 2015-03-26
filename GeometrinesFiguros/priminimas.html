@@ -7,6 +7,10 @@
 </head>
 
 <body>
+<? php
+include('priminimas.php');
+?>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div class="container">
     <div class="row vertical-offset-100">
@@ -16,7 +20,7 @@
                     <h3 class="panel-title">Priminti prisijungimo duomenis</h3>
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form">
+                    <form accept-charset="UTF-8" role="form" action="<?php $self ?>" method="post">
                         <fieldset>
                             <div class="form-group">
                                 <span class="help-block">

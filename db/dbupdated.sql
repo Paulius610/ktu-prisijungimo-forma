@@ -1,4 +1,4 @@
-BEGIN TRANSACTION;
+
 CREATE TABLE "votes" (
 	`IDuser`	INTEGER,
 	`IDpost`	INTEGER,
@@ -17,4 +17,4 @@ CREATE TABLE "posts" (
 	`content`	TEXT,
 	`date`	INTEGER
 );
-COMMIT;
+

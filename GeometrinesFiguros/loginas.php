@@ -1,8 +1,8 @@
 <?php
-$host = 'mysql9.000webhost.com';
-$username = 'a4119726_admin';
-$password = 'slaptazodis1';
-$database = 'a4119726_persons';
+$host = 'localhost';
+$username = 'root';
+$password = 'root';
+$database = 'db';
 
 $self = $_SERVER['PHP_SELF'];
 $ipaddress = ("$_SERVER[REMOTE_ADDR]");

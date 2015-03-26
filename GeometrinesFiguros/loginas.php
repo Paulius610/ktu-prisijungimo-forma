@@ -1,4 +1,5 @@
 <?php
+echo("valio");
 $host = 'mysql9.000webhost.com';
 $username = 'a4119726_admin';
 $password = 'slaptazodis1';
@@ -11,27 +12,26 @@ $connect = mysql_connect($host,$username,$password) or die('<p class="error">Una
 
 mysql_select_db($database,$connect) or die('<p class="error">Unable to connect to the database at this time.</p>');
 
-if(isset($_POST['submit'])) {
     if(empty($_POST['email']) || empty($_POST['password']) ) {
         echo('Nesuvedėte visų reikiamų duomenų');
     }
     else {
-        $email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
-        $password = htmlspecialchars(mysql_real_escape_string($_POST['password']));
+        $email = stripslashes($_POST['email']);
+        $password = stripslashes($_POST['password']);
+        $email = mysql_real_escape_string($email);
+        $password = mysql_real_escape_string($password);
 
-        $sql = "SELECT email, password FROM WHERE email='$email', password='$password';";
-        $query = @mysql_query($sql);
-        $rows = mysql_num_rows($query);
+        $sql = "SELECT * FROM db WHERE email='$email' and password='$password';";
+        $result = mysql_query($sql);
+        $count = mysql_num_rows($result);
 
-
-        if ($rows==1) {
+        if ($count==1) {
             echo("valio");
             header("Location: http://google.com");
         }
 
         else {
-            header("Location: http://google.com");
+            header("Location: http://bing.com");
         }
     }
-}
 ?>

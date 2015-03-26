@@ -1,5 +1,4 @@
 <?php
-echo("valio");
 $host = 'mysql9.000webhost.com';
 $username = 'a4119726_admin';
 $password = 'slaptazodis1';

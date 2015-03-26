@@ -1,8 +1,8 @@
 <?php
-$host = 'mysql3.000webhost.com';
-$username = 'a1952851_a195285';
+$host = 'mysql9.000webhost.com';
+$username = 'a4119726_admin';
 $password = 'slaptazodis1';
-$database = 'db';
+$database = 'a4119726_persons';
 
 $self = $_SERVER['PHP_SELF'];
 $ipaddress = ("$_SERVER[REMOTE_ADDR]");
@@ -11,16 +11,18 @@ $connect = mysql_connect($host,$username,$password) or die('<p class="error">Una
 
 mysql_select_db($database,$connect) or die('<p class="error">Unable to connect to the database at this time.</p>');
 
-if(isset($_POST['submit'])) {
-    if(empty($_POST['email']){
+    if(empty($_POST['email'])){
         echo('Nesuvedėte visų reikiamų duomenų');
     }
     else {
-        $email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
+        $email = stripslashes($_POST['email']);
+        $email = mysql_real_escape_string($email);
 
-        $sql = "SELECT email FROM WHERE email='$email';";
+        $sql = "SELECT password FROM db WHERE email='$email';";
+        $result = mysql_query($sql);
+        $count = mysql_num_rows($result);
 
-        if ($rows==1) {
+        if ($count==1) {
             echo("Priminimas dėl slaptažodžio išsiųstas");
         }
 
@@ -28,5 +30,5 @@ if(isset($_POST['submit'])) {
             echo("Toks el. paštas neegzistuoja");
         }
     }
-}
+
 ?>

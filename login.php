@@ -24,6 +24,7 @@
                     <div style="padding-top:30px" class="panel-body" >
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+						<div style="display:none" id="successsignup" class="alert alert-success col-sm-12"></div>
                             
                         <form id="loginform" class="form-horizontal" role="form" action="login.php"  method="post">
                                     
@@ -63,13 +64,15 @@
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                             Don't have an account! 
-                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show(); $('#successsignup').hide(); $('#login-alert').hide(); $('#signupalert').hide();">
                                             Sign Up Here
                                         </a>
                                         </div>
                                     </div>
                                 </div>
-									<input type="hidden" name="veiksmas" value="signin">								
+								
+								
+								<input type="hidden" name="veiksmas" value="signin">								
                             </form>     
 
 
@@ -82,7 +85,7 @@
                         <div class="panel-heading">
                             <div class="panel-title">Sign Up</div>
                             <div style="float:right; font-size: 85%; position: relative; top:-10px">
-							    <a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a>
+							    <a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show(); $('#successsignup').hide(); $('#login-alert').hide(); $('#signupalert').hide();">Sign In</a>
 							</div>
                         </div>  
                         <div class="panel-body" >
@@ -148,7 +151,7 @@
                                 </div>
                                 -->
                                 
-                            <input type="hidden" name="veiksmas" value="signup">	    
+								<input type="hidden" name="veiksmas" value="signup">	    
                             </form>
                          </div>
                     </div>
@@ -168,28 +171,64 @@ mysql_select_db($database,$connect) or die('<p class="error">Unable to connect t
 
 $veiksmas = htmlspecialchars(mysql_real_escape_string($_POST['veiksmas']));
 if ($veiksmas=='signup') {
-	$username = htmlspecialchars(mysql_real_escape_string($_POST['username'])); 
-	$firstname = htmlspecialchars(mysql_real_escape_string($_POST['firstname'])); 
-	$lastname = htmlspecialchars(mysql_real_escape_string($_POST['lastname']));
-	$email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
-	$password = htmlspecialchars(mysql_real_escape_string($_POST['password']));
-	$sql = "INSERT INTO setup SET username='$username', firstname='$firstname', lastname='$lastname', email='$email', password='$password';";
-	//echo $sql;
-	$result = mysql_query($sql);
+	if(empty($_POST['username']) || empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['password'])) {
+			echo "<script>
+				document.getElementById(\"signupalert\").innerHTML=\"<p>You did not fill in all required fields</p>\";
+				$('#signupalert').show();
+				$('#signupbox').show();
+				$('#loginbox').hide();
+				</script>";
+	}
+	else {
+	
+		$username = htmlspecialchars(mysql_real_escape_string($_POST['username']));
+		$sql = "SELECT username from users WHERE username='$username';";
+		$result = mysql_query($sql);
+		$rowcount=mysql_num_rows($result);
+		if ($rowcount==0){
+			$firstname = htmlspecialchars(mysql_real_escape_string($_POST['firstname'])); 
+			$lastname = htmlspecialchars(mysql_real_escape_string($_POST['lastname']));
+			$email = htmlspecialchars(mysql_real_escape_string($_POST['email']));
+			$password = htmlspecialchars(mysql_real_escape_string($_POST['password']));
+			$sql = "INSERT INTO users SET username='$username', firstname='$firstname', lastname='$lastname', email='$email', password='$password';";
+			//echo $sql;
+			$result = mysql_query($sql);
+			echo "<script>
+			document.getElementById(\"successsignup\").innerHTML=\"<p>Success: You have registered successfully.\";
+			$('#successsignup').show();
+			</script>";
+		}
+		else {
+			echo "<script>
+			document.getElementById(\"signupalert\").innerHTML=\"<p>Error: Username '".$username."' already exist.</p>\";
+			$('#signupalert').show();
+			$('#signupbox').show();
+			$('#loginbox').hide();
+			</script>";
+		}
+	}
+
+	
 }
 if ($veiksmas=='signin') {
 	$username = htmlspecialchars(mysql_real_escape_string($_POST['username']));
 	$password = htmlspecialchars(mysql_real_escape_string($_POST['password']));
-	$sql = "SELECT username, password from setup WHERE username='$username' AND password='$password';";
+	$sql = "SELECT username, password from users WHERE username='$username' AND password='$password';";
 	//echo $sql;
 	$result = mysql_query($sql);
 	//var_dump($result);
 	$rowcount=mysql_num_rows($result);
 	if ($rowcount!=0){
-		echo 'Prisijungta';
+		echo "<script>
+		document.getElementById(\"successsignup\").innerHTML=\"<p>Success: You have logged in successfully.\";
+		$('#successsignup').show();
+		</script>";
 }
 	else {
-		echo 'Nepavyko';
+		echo "<script>
+		document.getElementById(\"login-alert\").innerHTML=\"<p>Alert: Your username and password do not match.\";
+		$('#login-alert').show();
+		</script>";
 	}
 }
 

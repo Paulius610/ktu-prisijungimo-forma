@@ -7,9 +7,10 @@
 
 </head>
 <body>
+<br>
 <div align="center">
 
-    <h1>Kažkoks logo</h1><br>
+    <img src="images/jm.png" width="12%" height="12%" <br><br><br>
 
     <table class="table table-bordered" style="width: 40%;">
 

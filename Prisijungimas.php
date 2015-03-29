@@ -2,16 +2,17 @@
 <html><head lang="en">
     <meta charset="UTF-8">
     <title>JM</title>
-
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>
 <body>
-
+<br>
 
 <div align="center">
 
-    <h1>Kažkoks logo</h1><br>
+    <img width="12%" height="12%" alt="jm" src="images/jm.png"><br><br>
+
     <?php
     error_reporting(E_ALL);
 
@@ -26,7 +27,7 @@
 
 
 
-
+    /// Registracijos php kodas
 
     if(isset($_POST['registracija'])) {
         if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
@@ -66,6 +67,46 @@
         }}
     }
 
+    /// Prisijungimo Php kodas
+
+    if(isset($_POST['prisijungimas'])){
+        if(empty($_POST['name']) || empty($_POST['password'])){
+            echo('<div align="center" class="alert alert-danger"><p>Neužpildėte visų langelių!</p></div>');
+        }
+
+        else{
+            $pname=htmlspecialchars(mysql_real_escape_string($_POST['name']));
+            $ppassword =htmlspecialchars(mysql_real_escape_string($_POST['password']));
+
+            $query = "SELECT `nick`, `password` FROM `users` WHERE nick='$pname';";
+            $check = @mysql_query("$query") or die('<p class="error">Nepavyko gauti duomenų iš duomenų bazės.</p>');
+
+
+            $nr = mysql_num_rows($check);
+
+            ///Tikrina ar toks vartotojas egzistuoja
+
+            if($nr < 1){
+                echo('<div align="center" class="alert alert-danger"><p>Tokio vartotojo nėra!</p></div>');
+            }
+
+            /// tikrina ar teisingai įvestas slaptažodis
+
+            else{
+                while($row = mysql_fetch_assoc($check)) {
+                    $password = $row['password'];
+                    if($ppassword==$password){
+                        echo('<div align="center" class="alert alert-success"><p>Slaptažodis teisingas!</p></div>');
+                    }
+
+                    else{
+                        echo('<div align="center" class="alert alert-danger"><p>Slaptažodis neteisingas!</p></div>');
+                    }
+                }
+            }
+        }
+    }
+
     ?>
     <table class="table table-bordered" style="width: 40%;">
 
@@ -77,7 +118,7 @@
         </td>
 
         <td class="alert-info">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="<?php $self ?>" method="post">
 
                 <label  class="col-xs-4 control-label">Vardas </label>
                 <div class="col-sm-8">
@@ -95,7 +136,8 @@
                 <div class="form-group" >
                     <div class="col-sm-14" align="center">
                         <br>
-                        <button class="btn btn-primary">Prisijungti</button>
+                        <input name="prisijungimas" type="hidden" />
+                        <input class="btn btn-primary" type="submit" value="Prisijungti">
                     </div>
                 </div>
             </form></td>

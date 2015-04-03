@@ -106,7 +106,7 @@ include ('db.php'); // for db details
 				$a5=0;
 			}
 			else {
-				$passwordErr = "Password must be 8-20 characters long, have at least one letter, capital letter and number";
+				$passwordErr = "Password must be 8-20 characters long, have at least one small letter, capital letter and number";
 				$a5=1;
 			}
 		}
@@ -127,7 +127,7 @@ include ('db.php'); // for db details
 					$a=0;
 				}
 				else {
-					$newpasswordErr = "Password must be 8-20 characters long, have at least one letter, capital letter and number";
+					$newpasswordErr = "Password must be 8-20 characters long, have at least one small letter, capital letter and number";
 					$a=1;
 				}
 			}
